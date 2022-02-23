@@ -1,0 +1,19 @@
+{
+  "hosts": [
+    {
+      "name": "my-mikrotik-host",
+      "ip": "198.51.100.123",
+      "port": 8729,
+      "username": "admin",
+      "password": "secret"
+    },
+    {
+      "name": "my-other-mikrotik-host",
+      "ip": "198.51.100.100",
+      "port": 8729,
+      "username": "admin",
+      "password": "someothersecret",
+      "tlsInsecureSkipVerify": true
+    }
+  ]
+}

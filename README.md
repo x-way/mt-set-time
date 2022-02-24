@@ -12,6 +12,8 @@ Install the go package
 Run the go binary from your local path
 ```
 # mt-set-time -h host1
+Device time: jan/01/2000 00:11:25 Europe/Zurich
+Device time: feb/23/2022 19:49:37 Europe/Zurich
 ```
 
 ## Parameters

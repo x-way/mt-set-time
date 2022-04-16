@@ -82,7 +82,7 @@ func main() {
 
 	client, err := routeros.DialTLS(fmt.Sprintf("%s:%d", hostConf.IP, hostConf.Port), hostConf.Username, hostConf.Password, &tls.Config{InsecureSkipVerify: hostConf.TLSInsecureSkipVerify})
 	if err != nil {
-		log.Fatal(fmt.Errorf("failed to DialTLS: %v", err))
+		log.Fatalf("failed to DialTLS: %v", err)
 	}
 	defer client.Close()
 
@@ -100,7 +100,7 @@ func main() {
 		fmt.Sprintf("=time=%s=", t.Format("15:04:05")),
 	})
 	if err != nil {
-		log.Fatal(fmt.Errorf("failed to /system/clock/set: %v", err))
+		log.Fatalf("failed to /system/clock/set: %v", err)
 	}
 
 	showTime(client)
@@ -109,7 +109,7 @@ func main() {
 func showTime(client *routeros.Client) string {
 	res, err := client.Run("/system/clock/getall")
 	if err != nil {
-		log.Fatal(fmt.Errorf("failed to /system/clock/getall: %v", err))
+		log.Fatalf("failed to /system/clock/getall: %v", err)
 	}
 
 	if len(res.Re) > 0 {

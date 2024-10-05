@@ -1,5 +1,7 @@
 module github.com/x-way/mt-set-time
 
-require github.com/go-routeros/routeros v0.0.0-20210123142807-2a44d57c6730
+require github.com/go-routeros/routeros/v3 v3.0.0
 
-go 1.19
+go 1.22
+
+toolchain go1.22.7

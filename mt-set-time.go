@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"os"
 	"time"
@@ -31,9 +31,9 @@ func loadMappingFile(filename string) (*hostConfigList, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer mappingFile.Close()
+	defer func() { _ = mappingFile.Close() }()
 
-	bytes, err := ioutil.ReadAll(mappingFile)
+	bytes, err := io.ReadAll(mappingFile)
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +84,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to DialTLS: %v", err)
 	}
-	defer client.Close()
+	defer func() { _ = client.Close() }()
 
 	tz := showTime(client)
 	if tz == "" {

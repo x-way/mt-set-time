@@ -27,7 +27,7 @@ type hostConfig struct {
 }
 
 func loadMappingFile(filename string) (*hostConfigList, error) {
-	mappingFile, err := os.Open(filename)
+	mappingFile, err := os.Open(filename) // #nosec G304 -- filename supplied via -m CLI flag, not attacker-controlled
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func main() {
 		hostConf.IP = *ip
 	}
 
-	client, err := routeros.DialTLS(fmt.Sprintf("%s:%d", hostConf.IP, hostConf.Port), hostConf.Username, hostConf.Password, &tls.Config{InsecureSkipVerify: hostConf.TLSInsecureSkipVerify})
+	client, err := routeros.DialTLS(fmt.Sprintf("%s:%d", hostConf.IP, hostConf.Port), hostConf.Username, hostConf.Password, &tls.Config{InsecureSkipVerify: hostConf.TLSInsecureSkipVerify}) // #nosec G402 -- InsecureSkipVerify is an explicit per-host opt-in from the operator's config, not hardcoded
 	if err != nil {
 		log.Fatalf("failed to DialTLS: %v", err)
 	}

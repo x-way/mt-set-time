@@ -1,4 +1,5 @@
 # mt-set-time - MikroTik set time
+[![CircleCI](https://circleci.com/gh/x-way/mt-set-time/tree/main.svg?style=svg)](https://circleci.com/gh/x-way/mt-set-time/tree/main)
 
 The `mt-set-time` tool provides a way to set the time on MikroTik routers based on the current local time.
 
